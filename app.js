@@ -5,9 +5,14 @@ const screens = [...document.querySelectorAll("[data-screen]")];
 const menuButton = document.querySelector(".menu-button");
 const siteNav = document.querySelector("#site-nav");
 const toast = document.querySelector("#toast");
+const printModal = document.querySelector("#print-modal");
+const printButton = document.querySelector("#print-result");
+const confirmPrintButton = document.querySelector("#confirm-print");
+const cancelPrintButton = document.querySelector("#cancel-print");
 let toastTimer;
 let currentResultSections = [];
 let currentTodayChoice = "";
+let printModalReturnFocus = null;
 
 const topicData = {
   health: {
@@ -497,6 +502,21 @@ function setFontSize(size) {
   }
 }
 
+function openPrintModal() {
+  printModalReturnFocus = document.activeElement;
+  printModal.hidden = false;
+  document.body.classList.add("modal-open");
+  confirmPrintButton.focus();
+}
+
+function closePrintModal({ restoreFocus = true } = {}) {
+  printModal.hidden = true;
+  document.body.classList.remove("modal-open");
+  if (restoreFocus && printModalReturnFocus instanceof HTMLElement) {
+    printModalReturnFocus.focus();
+  }
+}
+
 document.addEventListener("click", (event) => {
   const screenLink = event.target.closest("[data-screen-link], [data-screen-button]");
   if (screenLink) {
@@ -541,6 +561,33 @@ document.addEventListener("click", (event) => {
 
 });
 
+printModal.addEventListener("click", (event) => {
+  if (event.target.closest("[data-print-modal-close]")) {
+    closePrintModal();
+  }
+});
+
+printModal.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    event.preventDefault();
+    closePrintModal();
+    return;
+  }
+
+  if (event.key !== "Tab") return;
+  const focusable = [...printModal.querySelectorAll("button:not([disabled])")];
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+});
+
 menuButton.addEventListener("click", () => {
   const open = siteNav.classList.toggle("is-open");
   menuButton.setAttribute("aria-expanded", String(open));
@@ -561,7 +608,12 @@ form.addEventListener("submit", (event) => {
 
 document.querySelector("#copy-all").addEventListener("click", () => copyText(getAllResultText()));
 document.querySelector("#copy-today-choice").addEventListener("click", () => copyText(`今日使うひとつ\n${currentTodayChoice}`));
-document.querySelector("#print-result").addEventListener("click", () => window.print());
+printButton.addEventListener("click", openPrintModal);
+cancelPrintButton.addEventListener("click", () => closePrintModal());
+confirmPrintButton.addEventListener("click", () => {
+  closePrintModal();
+  window.print();
+});
 document.querySelector("#reset-form").addEventListener("click", resetForm);
 
 const initialScreen = location.hash.replace("#", "");

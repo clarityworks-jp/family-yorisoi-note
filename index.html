@@ -172,7 +172,10 @@
 
       <div class="result-actions no-print">
         <button id="copy-all" class="button primary-button" type="button">全体をコピー</button>
-        <button id="print-result" class="button secondary-button" type="button">印刷する</button>
+        <div class="print-action">
+          <button id="print-result" class="button secondary-button" type="button">PDF保存・印刷</button>
+          <p class="print-hint">プリンタがなくても大丈夫です。スマホでは、印刷画面からPDFとして保存できる場合があります。</p>
+        </div>
         <button id="reset-form" class="button text-button" type="button">入力をやり直す</button>
       </div>
 
@@ -221,6 +224,35 @@
     <p class="copyright">制作：Clarity Works<br>© 2026 Clarity Works</p>
     <small>入力内容はこの端末の画面内だけで扱われ、外部へ送信されません。安心できる範囲でお使いください。</small>
   </footer>
+
+  <div id="print-modal" class="print-modal no-print" hidden>
+    <div class="print-modal-backdrop" data-print-modal-close></div>
+    <section
+      class="print-modal-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="print-modal-title"
+      aria-describedby="print-modal-description"
+    >
+      <h2 id="print-modal-title">PDF保存・印刷について</h2>
+      <div id="print-modal-description">
+        <p><strong>プリンタがなくても大丈夫です。</strong><br>スマホでは、次の操作でPDFとして保存できる場合があります。</p>
+        <div class="print-guide">
+          <h3>iPhone</h3>
+          <p>印刷プレビューを2本指で広げる → 共有ボタン → ファイルに保存</p>
+        </div>
+        <div class="print-guide">
+          <h3>Android</h3>
+          <p>プリンタ選択で「PDFに保存」または「Save as PDF」を選ぶ</p>
+        </div>
+        <p>準備ができたら、次の画面で保存または印刷してください。</p>
+      </div>
+      <div class="print-modal-actions">
+        <button id="confirm-print" class="button primary-button" type="button">PDF保存・印刷へ進む</button>
+        <button id="cancel-print" class="button text-button" type="button">キャンセル</button>
+      </div>
+    </section>
+  </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="app.js" defer></script>
