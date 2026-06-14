@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#d49a8f">
+  <meta name="description" content="大切な家族との会話を、あたたかく始めるためのよりそいノートです。">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>家族を想う よりそいノート</title>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" data-screen-link="top" aria-label="トップへ">
+      <span class="brand-mark" aria-hidden="true">⌒</span>
+      <span>よりそいノート</span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">メニュー</button>
+    <nav id="site-nav" class="site-nav" aria-label="メインメニュー">
+      <a href="#top" data-screen-link="top">トップ</a>
+      <a href="#how-to" data-screen-link="how-to">使い方</a>
+      <a href="#notice" data-screen-link="notice">注意事項</a>
+      <div class="font-size-control" aria-label="文字の大きさ">
+        <span>文字の大きさ</span>
+        <div>
+          <button class="font-size-button is-selected" type="button" data-font-size="standard" aria-pressed="true">標準</button>
+          <button class="font-size-button" type="button" data-font-size="large" aria-pressed="false">大きめ</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="top" class="screen is-active hero-screen" data-screen="top">
+      <div class="hero-decoration" aria-hidden="true">
+        <span class="leaf leaf-one"></span>
+        <span class="leaf leaf-two"></span>
+        <span class="flower">✿</span>
+      </div>
+      <p class="eyebrow">大切な人を想う気持ちを、少しずつ</p>
+      <h1>家族を想う<br><span>よりそいノート</span></h1>
+      <p class="hero-subtitle">話せそうなこと、そっと気づいたこと、家族に伝えておきたいことを、<br>無理のない「会話のしおり」として整理できます。</p>
+
+      <div class="intro-card">
+        <div class="notebook-illustration" aria-hidden="true">
+          <span class="notebook-ring"></span>
+          <span class="notebook-line"></span>
+          <span class="notebook-line short"></span>
+          <span class="notebook-heart">♡</span>
+        </div>
+        <div>
+          <p><strong>すべてを一度に話さなくて大丈夫です。</strong></p>
+          <p>帰省前、電話の前、久しぶりに会う前に。今回ふれられそうなことを、少しだけ心に置いてみましょう。</p>
+        </div>
+      </div>
+
+      <div class="action-stack">
+        <button class="button primary-button" type="button" data-screen-button="form">よりそいノートを作る</button>
+        <button class="button secondary-button" type="button" data-screen-button="how-to">使い方を見る</button>
+      </div>
+
+      <div class="trust-note" aria-label="安心してお使いいただくためのご案内">
+        <p><span aria-hidden="true">○</span> 入力内容は外部に送信されません。</p>
+        <p>このツールは無料で使えます。運営のため、一部に広告・関連サービスの紹介をそっと添えています。</p>
+      </div>
+    </section>
+
+    <section id="how-to" class="screen content-screen" data-screen="how-to" hidden>
+      <p class="eyebrow">話せそうなところから</p>
+      <h2>使い方</h2>
+      <div class="step-list">
+        <div class="step-card"><span>1</span><p>想っている家族のことを、そっと選びます。</p></div>
+        <div class="step-card"><span>2</span><p>今、少し心に浮かんでいることを選びます。</p></div>
+        <div class="step-card"><span>3</span><p>話すとしたら、どんな雰囲気がよさそうか選びます。</p></div>
+        <div class="step-card"><span>4</span><p>「会話のしおり」を作ります。</p></div>
+        <div class="step-card"><span>5</span><p>必要なところだけ、無理なく会話や家族へのメモに使ってください。</p></div>
+      </div>
+      <div class="soft-message">
+        <p>このノートは、すべてを聞き出すためのものではありません。</p>
+        <p>大切な家族との会話に、少しだけあたたかい入口をつくるためのものです。</p>
+      </div>
+      <button class="button primary-button" type="button" data-screen-button="form">ノートを作ってみる</button>
+    </section>
+
+    <section id="form" class="screen content-screen form-screen" data-screen="form" hidden>
+      <p class="eyebrow">今の気持ちに近いものだけ</p>
+      <h2>よりそいノートを作る</h2>
+      <p class="section-lead">お名前や住所などの個人情報は入力しません。迷うところは、そのままでも大丈夫。今の気持ちに近いものを選んでください。</p>
+
+      <form id="note-form">
+        <fieldset>
+          <legend><span class="question-number">1</span>どなたのことを想って、ノートを作りますか？</legend>
+          <div class="choice-grid single">
+            <label class="choice"><input type="radio" name="person" value="親" required><span>親</span></label>
+            <label class="choice"><input type="radio" name="person" value="祖父母"><span>祖父母</span></label>
+            <label class="choice"><input type="radio" name="person" value="義父母"><span>義父母</span></label>
+            <label class="choice"><input type="radio" name="person" value="配偶者の家族"><span>配偶者の家族</span></label>
+            <label class="choice wide"><input type="radio" name="person" value="その他の家族"><span>その他の家族</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="question-number">2</span>ふだんの距離感に近いものを選んでください。</legend>
+          <div class="choice-grid single">
+            <label class="choice"><input type="radio" name="distance" value="一緒に暮らしている" required><span>一緒に暮らしている</span></label>
+            <label class="choice"><input type="radio" name="distance" value="近くに住んでいる"><span>近くに住んでいる</span></label>
+            <label class="choice"><input type="radio" name="distance" value="離れて暮らしている"><span>離れて暮らしている</span></label>
+            <label class="choice"><input type="radio" name="distance" value="帰省や用事のときに会う"><span>帰省や用事のときに会う</span></label>
+            <label class="choice wide"><input type="radio" name="distance" value="電話やLINEで話すことが多い"><span>電話やLINEで話すことが多い</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="question-number">3</span>今、少し気になっていることはありますか？</legend>
+          <p class="field-hint">いくつでも選べます。</p>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="concerns" value="health"><span>健康や通院のこと</span></label>
+            <label class="choice"><input type="checkbox" name="concerns" value="food"><span>食事や買い物のこと</span></label>
+            <label class="choice"><input type="checkbox" name="concerns" value="home"><span>家の中の安全のこと</span></label>
+            <label class="choice"><input type="checkbox" name="concerns" value="contact"><span>連絡先や緊急時のこと</span></label>
+            <label class="choice"><input type="checkbox" name="concerns" value="documents"><span>書類や大事なものの置き場所</span></label>
+            <label class="choice"><input type="checkbox" name="concerns" value="future"><span>これからの暮らしの希望</span></label>
+            <label class="choice wide"><input type="checkbox" name="concerns" value="gentle"><span>まだ大きな不安はないけれど、少しずつ話しておきたい</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="question-number">4</span>どんな雰囲気で話したいですか？</legend>
+          <div class="choice-grid single">
+            <label class="choice"><input type="radio" name="tone" value="soft" required><span>とてもやわらかく</span></label>
+            <label class="choice"><input type="radio" name="tone" value="natural"><span>ふだんの会話の中で自然に</span></label>
+            <label class="choice"><input type="radio" name="tone" value="family"><span>家族で共有しやすい形で</span></label>
+            <label class="choice"><input type="radio" name="tone" value="one"><span>まずは軽く、ひとつだけ</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="question-number">5</span>今回のよりそいノートで、何を整理したいですか？</legend>
+          <p class="field-hint">いくつでも選べます。</p>
+          <div class="choice-grid">
+            <label class="choice"><input type="checkbox" name="purposes" value="talk"><span>話すことを整理したい</span></label>
+            <label class="choice"><input type="checkbox" name="purposes" value="observe"><span>そっと見ておくことを整理したい</span></label>
+            <label class="choice"><input type="checkbox" name="purposes" value="share"><span>家族に共有することを整理したい</span></label>
+            <label class="choice"><input type="checkbox" name="purposes" value="next"><span>次にできることを整理したい</span></label>
+            <label class="choice wide"><input type="checkbox" name="purposes" value="overview"><span>まだ決めずに、やさしく全体を見たい</span></label>
+          </div>
+        </fieldset>
+
+        <p id="form-error" class="form-error" role="alert" hidden>まだ選ばれていない項目があります。無理のない範囲で、近いものを選んでください。</p>
+        <button class="button primary-button submit-button" type="submit">会話のしおりを作る</button>
+      </form>
+    </section>
+
+    <section id="result" class="screen content-screen result-screen" data-screen="result" hidden>
+      <div class="result-heading">
+        <p class="eyebrow">あなたと大切な人のペースで</p>
+        <h2>会話のしおりができました</h2>
+        <p id="result-personal-message" class="personal-message"></p>
+        <p>すべてを話そうとしなくて大丈夫です。今回話せそうなことを、ひとつ心に留めるだけでも十分です。相手のペースと、これまで大切にしてきた暮らしを尊重しながら、無理のないところから始めてみてください。</p>
+      </div>
+
+      <section id="today-choice" class="today-choice" aria-live="polite">
+        <p class="eyebrow">今日、心に置いておくなら</p>
+        <h3>今日使うひとつ</h3>
+        <p id="today-choice-text">下のカードから、話してみたい言葉や小さな一歩をひとつ選べます。今は選ばなくても大丈夫です。</p>
+        <button id="copy-today-choice" class="copy-today-choice no-print" type="button" hidden>このひとつをコピー</button>
+      </section>
+
+      <div id="result-cards" class="result-cards"></div>
+
+      <div class="result-actions no-print">
+        <button id="copy-all" class="button primary-button" type="button">全体をコピー</button>
+        <button id="print-result" class="button secondary-button" type="button">印刷する</button>
+        <button id="reset-form" class="button text-button" type="button">入力をやり直す</button>
+      </div>
+
+      <aside id="related-area" class="related-area no-print">
+        <p class="eyebrow">選択肢のひとつとして</p>
+        <h2>関連する備え</h2>
+        <p>必要になったときの選択肢として、暮らしに寄り添う備えを少しだけまとめています。無理に急ぐ必要はありません。本人の気持ちを大切にしながら、合いそうなものがあれば眺めてみてください。</p>
+        <div id="related-cards" class="related-cards"></div>
+        <p class="ad-disclosure">一部リンクには広告・アフィリエイトリンクが含まれる場合があります。</p>
+      </aside>
+
+      <footer class="print-credit">
+        <p>家族を想う よりそいノート</p>
+        <small>制作：Clarity Works　© 2026 Clarity Works</small>
+      </footer>
+    </section>
+
+    <section id="notice" class="screen content-screen" data-screen="notice" hidden>
+      <p class="eyebrow">大切にしていること</p>
+      <h2>ご利用にあたって</h2>
+      <div class="notice-card">
+        <p>このツールは、家族との会話をやさしく始めるための一般的なメモ作成ツールです。</p>
+        <p>医療・介護・法律・相続などの専門的な判断を行うものではありません。</p>
+        <p>具体的な手続きや判断が必要な場合は、自治体の相談窓口、地域包括支援センター、医療機関、専門家などにご相談ください。</p>
+      </div>
+      <div class="notice-card accent">
+        <h3>相手の気持ちを真ん中に</h3>
+        <p>また、相手の気持ちやペースを大切にしてください。無理に聞き出したり、本人の意思を置き去りにしたりせず、その人らしい暮らしを尊重しながら、話せそうなところからそっと始めましょう。</p>
+      </div>
+      <div class="notice-card rights-card">
+        <h3>制作・権利について</h3>
+        <p>このツールは、Clarity Worksが制作しました。</p>
+        <p>このツールの文章、デザイン、構成、プログラム、画像などは、Clarity Worksが大切に制作したものです。無断での転載、複製、再配布、販売、改変しての公開はご遠慮ください。</p>
+        <p>個人やご家庭で、家族との会話のきっかけとして使っていただくことは歓迎します。</p>
+      </div>
+      <button class="button primary-button" type="button" data-screen-button="top">トップへ戻る</button>
+    </section>
+  </main>
+
+  <footer class="site-footer no-print">
+    <p>家族を想う よりそいノート</p>
+    <div>
+      <a href="#how-to" data-screen-link="how-to">使い方</a>
+      <a href="#notice" data-screen-link="notice">注意事項</a>
+    </div>
+    <p class="copyright">制作：Clarity Works<br>© 2026 Clarity Works</p>
+    <small>入力内容はこの端末の画面内だけで扱われ、外部へ送信されません。安心できる範囲でお使いください。</small>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>
