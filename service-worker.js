@@ -1,4 +1,4 @@
-const CACHE_NAME = "yorisoi-note-v9";
+const CACHE_NAME = "yorisoi-note-v11";
 const APP_SHELL = [
   "./",
   "./index.html",

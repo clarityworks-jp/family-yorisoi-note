@@ -42,6 +42,7 @@
       <p class="eyebrow">大切な人を想う気持ちを、少しずつ</p>
       <h1>家族を想う<br><span>よりそいノート</span></h1>
       <p class="hero-subtitle">話せそうなこと、そっと気づいたこと、家族に伝えておきたいことを、<br>無理のない「会話のしおり」として整理できます。</p>
+      <p class="beginner-guide">はじめての方は、<a href="#how-to" data-screen-link="how-to">使い方</a>で作られるメモの例も見られます。</p>
 
       <div class="intro-card">
         <div class="notebook-illustration" aria-hidden="true">
@@ -61,6 +62,17 @@
         <button class="button secondary-button" type="button" data-screen-button="how-to">使い方を見る</button>
       </div>
 
+      <div class="sample-note-card" aria-label="作れるしおりの小さな例">
+        <p class="sample-note-label">作れるものの例</p>
+        <h2>会話のしおり</h2>
+        <ul>
+          <li>やさしく話すきっかけ</li>
+          <li>聞いてみてもよさそうなこと</li>
+          <li>次にできる小さな一歩</li>
+        </ul>
+        <p>必要なところだけ、コピーやPDF保存・印刷に使えます。</p>
+      </div>
+
       <div class="trust-note" aria-label="安心してお使いいただくためのご案内">
         <p><span aria-hidden="true">○</span> 入力内容は外部に送信されません。</p>
         <p>このツールは無料で使えます。運営のため、一部に広告・関連サービスの紹介をそっと添えています。</p>
@@ -77,6 +89,15 @@
         <div class="step-card"><span>4</span><p>「会話のしおり」を作ります。</p></div>
         <div class="step-card"><span>5</span><p>必要なところだけ、無理なく会話や家族へのメモに使ってください。</p></div>
       </div>
+      <details class="sample-toggle">
+        <summary>会話のしおりの例を見る</summary>
+        <div class="sample-result">
+          <h3>会話のしおりの例</h3>
+          <p><strong>今日話せそうなひとこと：</strong><br>「最近、少し疲れてない？」</p>
+          <p><strong>聞いてみたいこと：</strong><br>「今、手伝えることはある？」</p>
+          <p><strong>話すときのメモ：</strong><br>全部を聞こうとしなくて大丈夫です。<br>まずは短く、やさしく声をかけるところから始めます。</p>
+        </div>
+      </details>
       <div class="soft-message">
         <p>このノートは、すべてを聞き出すためのものではありません。</p>
         <p>大切な家族との会話に、少しだけあたたかい入口をつくるためのものです。</p>
@@ -88,10 +109,15 @@
       <p class="eyebrow">今の気持ちに近いものだけ</p>
       <h2>よりそいノートを作る</h2>
       <p class="section-lead">お名前や住所などの個人情報は入力しません。迷うところは、そのままでも大丈夫。今の気持ちに近いものを選んでください。</p>
+      <div class="form-guide" aria-label="入力の目安">
+        <p><strong>所要時間：1〜2分</strong></p>
+        <p>1・2・4はひとつずつ、3・5はいくつでも選べます。今の気持ちに近いものだけで大丈夫です。</p>
+      </div>
 
       <form id="note-form">
         <fieldset>
           <legend><span class="question-number">1</span>どなたのことを想って、ノートを作りますか？</legend>
+          <p class="field-hint">ひとつ選びます。</p>
           <div class="choice-grid single">
             <label class="choice"><input type="radio" name="person" value="親" required><span>親</span></label>
             <label class="choice"><input type="radio" name="person" value="祖父母"><span>祖父母</span></label>
@@ -103,6 +129,7 @@
 
         <fieldset>
           <legend><span class="question-number">2</span>ふだんの距離感に近いものを選んでください。</legend>
+          <p class="field-hint">ひとつ選びます。</p>
           <div class="choice-grid single">
             <label class="choice"><input type="radio" name="distance" value="一緒に暮らしている" required><span>一緒に暮らしている</span></label>
             <label class="choice"><input type="radio" name="distance" value="近くに住んでいる"><span>近くに住んでいる</span></label>
@@ -114,7 +141,7 @@
 
         <fieldset>
           <legend><span class="question-number">3</span>今、少し気になっていることはありますか？</legend>
-          <p class="field-hint">いくつでも選べます。</p>
+          <p class="field-hint">いくつでも選べます。ひとつだけでも大丈夫です。</p>
           <div class="choice-grid">
             <label class="choice"><input type="checkbox" name="concerns" value="health"><span>健康や通院のこと</span></label>
             <label class="choice"><input type="checkbox" name="concerns" value="food"><span>食事や買い物のこと</span></label>
@@ -128,6 +155,7 @@
 
         <fieldset>
           <legend><span class="question-number">4</span>どんな雰囲気で話したいですか？</legend>
+          <p class="field-hint">ひとつ選びます。</p>
           <div class="choice-grid single">
             <label class="choice"><input type="radio" name="tone" value="soft" required><span>とてもやわらかく</span></label>
             <label class="choice"><input type="radio" name="tone" value="natural"><span>ふだんの会話の中で自然に</span></label>
@@ -138,7 +166,7 @@
 
         <fieldset>
           <legend><span class="question-number">5</span>今回のよりそいノートで、何を整理したいですか？</legend>
-          <p class="field-hint">いくつでも選べます。</p>
+          <p class="field-hint">いくつでも選べます。迷ったら、近いものをひとつだけ選んでも大丈夫です。</p>
           <div class="choice-grid">
             <label class="choice"><input type="checkbox" name="purposes" value="talk"><span>話すことを整理したい</span></label>
             <label class="choice"><input type="checkbox" name="purposes" value="observe"><span>そっと見ておくことを整理したい</span></label>
@@ -165,6 +193,7 @@
         <p class="eyebrow">今日、心に置いておくなら</p>
         <h3>今日使うひとつ</h3>
         <p id="today-choice-text">下のカードから、話してみたい言葉や小さな一歩をひとつ選べます。今は選ばなくても大丈夫です。</p>
+        <p class="today-choice-note">「今日はこれ」は、今日使えそうな言葉をひとつだけ残しておくための目印です。</p>
         <button id="copy-today-choice" class="copy-today-choice no-print" type="button" hidden>このひとつをコピー</button>
       </section>
 
@@ -176,7 +205,7 @@
           <button id="print-result" class="button secondary-button" type="button">PDF保存・印刷</button>
           <p class="print-hint">プリンタがなくても大丈夫です。スマホでは、印刷画面からPDFとして保存できる場合があります。</p>
         </div>
-        <button id="reset-form" class="button text-button" type="button">入力をやり直す</button>
+        <button id="reset-form" class="button text-button" type="button">もう一度選びなおす</button>
       </div>
 
       <aside id="related-area" class="related-area no-print">

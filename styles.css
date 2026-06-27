@@ -213,6 +213,30 @@ p { margin: 0 0 1em; }
 }
 .intro-card p:last-child { margin-bottom: 0; }
 
+.sample-note-card {
+  margin: 18px auto 28px;
+  padding: 18px 20px;
+  border: 1px solid rgba(234, 223, 210, .9);
+  border-radius: 22px;
+  background: rgba(255, 253, 250, .9);
+  text-align: left;
+}
+.sample-note-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+.sample-note-card ul {
+  margin: 0 0 12px;
+  padding-left: 1.25em;
+}
+.sample-note-card p:last-child { margin-bottom: 0; color: var(--muted); font-size: .9rem; }
+.sample-note-label {
+  margin-bottom: 4px;
+  color: var(--green-deep);
+  font-size: .78rem;
+  font-weight: 700;
+}
+
 .notebook-illustration {
   position: relative;
   width: 68px;
@@ -245,6 +269,17 @@ p { margin: 0 0 1em; }
 .notebook-heart { position: absolute; right: 10px; bottom: 6px; color: var(--pink-deep); font-size: 23px; }
 
 .action-stack { display: grid; gap: 12px; }
+.beginner-guide {
+  margin: -12px auto 26px;
+  color: var(--muted);
+  font-size: .88rem;
+}
+.beginner-guide a {
+  color: var(--green-deep);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .button {
   display: inline-flex;
   align-items: center;
@@ -288,6 +323,16 @@ p { margin: 0 0 1em; }
 
 .content-screen { padding: 46px 0 68px; }
 .section-lead { margin-bottom: 34px; color: var(--muted); }
+.form-guide {
+  margin: -16px 0 30px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 253, 250, .92);
+}
+.form-guide p { margin-bottom: 6px; color: var(--muted); }
+.form-guide p:last-child { margin-bottom: 0; }
+.form-guide strong { color: var(--green-deep); }
 .step-list { display: grid; gap: 12px; margin: 28px 0; }
 .step-card {
   display: flex;
@@ -310,6 +355,33 @@ p { margin: 0 0 1em; }
   font-weight: 800;
 }
 .step-card p { margin: 0; }
+.sample-toggle {
+  margin: 20px 0 28px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 253, 250, .92);
+  overflow: hidden;
+}
+.sample-toggle summary {
+  min-height: 52px;
+  padding: 14px 18px;
+  color: var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+}
+.sample-toggle summary::marker { color: var(--green-deep); }
+.sample-result {
+  padding: 0 18px 18px;
+  color: var(--muted);
+}
+.sample-result h3 {
+  margin-bottom: 12px;
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+.sample-result p { margin-bottom: 14px; }
+.sample-result p:last-child { margin-bottom: 0; }
+.sample-result strong { color: var(--green-deep); }
 .soft-message, .notice-card {
   margin: 28px 0;
   padding: 23px;
@@ -399,9 +471,15 @@ legend {
   box-shadow: var(--shadow);
 }
 .today-choice h3 { margin-bottom: 10px; }
-.today-choice p:last-of-type {
+#today-choice-text {
   margin-bottom: 0;
   font-weight: 600;
+}
+.today-choice-note {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: .88rem;
+  font-weight: 400;
 }
 .copy-today-choice {
   min-height: 44px;
