@@ -13,6 +13,8 @@ let toastTimer;
 let currentResultSections = [];
 let currentTodayChoice = "";
 let printModalReturnFocus = null;
+let formValidationStarted = false;
+const requiredGroups = ["person", "distance", "tone"];
 
 const topicData = {
   health: {
@@ -213,6 +215,20 @@ function getSelectedValues() {
   };
 }
 
+function getMissingRequiredGroups(values) {
+  return requiredGroups.filter((name) => !values[name]);
+}
+
+function updateRequiredErrors(missingGroups) {
+  const missing = new Set(missingGroups);
+  document.querySelectorAll("[data-required-group]").forEach((fieldset) => {
+    const hasError = missing.has(fieldset.dataset.requiredGroup);
+    fieldset.classList.toggle("has-error", hasError);
+    fieldset.setAttribute("aria-invalid", String(hasError));
+  });
+  document.querySelector("#form-error").hidden = missingGroups.length === 0;
+}
+
 function unique(items) {
   return [...new Set(items)];
 }
@@ -333,7 +349,7 @@ function selectableListMarkup(items) {
   return `<ul class="selectable-list">${items.map((item) => `
     <li>
       <span>${escapeHtml(item)}</span>
-      <button class="choose-today no-print" type="button" data-today-choice="${encodeURIComponent(item)}">今日はこれ</button>
+      <button class="choose-today no-print" type="button" data-today-choice="${encodeURIComponent(item)}">今日使う言葉に選ぶ</button>
     </li>
   `).join("")}</ul>`;
 }
@@ -429,7 +445,7 @@ function renderResult(values) {
       ${
         card.url
           ? `<a href="${escapeHtml(card.url)}" data-category="${escapeHtml(card.category)}" target="_blank" rel="noopener noreferrer">${escapeHtml(card.linkText)} →</a>`
-          : '<p class="related-card-status">関連ページは準備中です</p>'
+          : ""
       }
     </article>`).join("");
 }
@@ -483,7 +499,8 @@ function resetForm() {
   form.reset();
   currentResultSections = [];
   currentTodayChoice = "";
-  document.querySelector("#form-error").hidden = true;
+  formValidationStarted = false;
+  updateRequiredErrors([]);
   showScreen("form");
 }
 
@@ -595,15 +612,22 @@ menuButton.addEventListener("click", () => {
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  formValidationStarted = true;
   const values = getSelectedValues();
-  const valid = values.person && values.distance && values.tone && values.concerns.length && values.purposes.length;
-  document.querySelector("#form-error").hidden = Boolean(valid);
-  if (!valid) {
-    document.querySelector("#form-error").scrollIntoView({ behavior: "smooth", block: "center" });
+  const missingRequiredGroups = getMissingRequiredGroups(values);
+  updateRequiredErrors(missingRequiredGroups);
+  if (missingRequiredGroups.length) {
+    const firstMissingFieldset = document.querySelector(`[data-required-group="${missingRequiredGroups[0]}"]`);
+    (firstMissingFieldset || document.querySelector("#form-error")).scrollIntoView({ behavior: "smooth", block: "center" });
     return;
   }
   renderResult(values);
   showScreen("result");
+});
+
+form.addEventListener("change", () => {
+  if (!formValidationStarted) return;
+  updateRequiredErrors(getMissingRequiredGroups(getSelectedValues()));
 });
 
 document.querySelector("#copy-all").addEventListener("click", () => copyText(getAllResultText()));

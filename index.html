@@ -108,15 +108,15 @@
     <section id="form" class="screen content-screen form-screen" data-screen="form" hidden>
       <p class="eyebrow">今の気持ちに近いものだけ</p>
       <h2>よりそいノートを作る</h2>
-      <p class="section-lead">お名前や住所などの個人情報は入力しません。迷うところは、そのままでも大丈夫。今の気持ちに近いものを選んでください。</p>
+      <p class="section-lead">お名前や住所などの個人情報は入力しません。必須の3項目以外は、迷ったままでも大丈夫です。今の気持ちに近いものを選んでください。</p>
       <div class="form-guide" aria-label="入力の目安">
         <p><strong>所要時間：1〜2分</strong></p>
         <p>1・2・4はひとつずつ、3・5はいくつでも選べます。今の気持ちに近いものだけで大丈夫です。</p>
       </div>
 
-      <form id="note-form">
-        <fieldset>
-          <legend><span class="question-number">1</span>どなたのことを想って、ノートを作りますか？</legend>
+      <form id="note-form" novalidate>
+        <fieldset data-required-group="person">
+          <legend><span class="question-number">1</span>どなたのことを想って、ノートを作りますか？<span class="field-label required-label">必須</span></legend>
           <p class="field-hint">ひとつ選びます。</p>
           <div class="choice-grid single">
             <label class="choice"><input type="radio" name="person" value="親" required><span>親</span></label>
@@ -127,8 +127,8 @@
           </div>
         </fieldset>
 
-        <fieldset>
-          <legend><span class="question-number">2</span>ふだんの距離感に近いものを選んでください。</legend>
+        <fieldset data-required-group="distance">
+          <legend><span class="question-number">2</span>ふだんの距離感に近いものを選んでください。<span class="field-label required-label">必須</span></legend>
           <p class="field-hint">ひとつ選びます。</p>
           <div class="choice-grid single">
             <label class="choice"><input type="radio" name="distance" value="一緒に暮らしている" required><span>一緒に暮らしている</span></label>
@@ -140,7 +140,7 @@
         </fieldset>
 
         <fieldset>
-          <legend><span class="question-number">3</span>今、少し気になっていることはありますか？</legend>
+          <legend><span class="question-number">3</span>今、少し気になっていることはありますか？<span class="field-label optional-label">任意</span></legend>
           <p class="field-hint">いくつでも選べます。ひとつだけでも大丈夫です。</p>
           <div class="choice-grid">
             <label class="choice"><input type="checkbox" name="concerns" value="health"><span>健康や通院のこと</span></label>
@@ -153,8 +153,8 @@
           </div>
         </fieldset>
 
-        <fieldset>
-          <legend><span class="question-number">4</span>どんな雰囲気で話したいですか？</legend>
+        <fieldset data-required-group="tone">
+          <legend><span class="question-number">4</span>どんな雰囲気で話したいですか？<span class="field-label required-label">必須</span></legend>
           <p class="field-hint">ひとつ選びます。</p>
           <div class="choice-grid single">
             <label class="choice"><input type="radio" name="tone" value="soft" required><span>とてもやわらかく</span></label>
@@ -165,7 +165,7 @@
         </fieldset>
 
         <fieldset>
-          <legend><span class="question-number">5</span>今回のよりそいノートで、何を整理したいですか？</legend>
+          <legend><span class="question-number">5</span>今回のよりそいノートで、何を整理したいですか？<span class="field-label optional-label">任意</span></legend>
           <p class="field-hint">いくつでも選べます。迷ったら、近いものをひとつだけ選んでも大丈夫です。</p>
           <div class="choice-grid">
             <label class="choice"><input type="checkbox" name="purposes" value="talk"><span>話すことを整理したい</span></label>
@@ -176,7 +176,7 @@
           </div>
         </fieldset>
 
-        <p id="form-error" class="form-error" role="alert" hidden>まだ選ばれていない項目があります。無理のない範囲で、近いものを選んでください。</p>
+        <p id="form-error" class="form-error" role="alert" aria-live="assertive" hidden>まだ選ばれていない必須項目があります。赤い印のついた項目を確認してください。</p>
         <button class="button primary-button submit-button" type="submit">会話のしおりを作る</button>
       </form>
     </section>
@@ -193,7 +193,7 @@
         <p class="eyebrow">今日、心に置いておくなら</p>
         <h3>今日使うひとつ</h3>
         <p id="today-choice-text">下のカードから、話してみたい言葉や小さな一歩をひとつ選べます。今は選ばなくても大丈夫です。</p>
-        <p class="today-choice-note">「今日はこれ」は、今日使えそうな言葉をひとつだけ残しておくための目印です。</p>
+        <p class="today-choice-note">「今日使う言葉に選ぶ」は、今日使えそうな言葉をひとつだけ残しておくための目印です。</p>
         <button id="copy-today-choice" class="copy-today-choice no-print" type="button" hidden>このひとつをコピー</button>
       </section>
 
