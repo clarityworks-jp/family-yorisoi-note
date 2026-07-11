@@ -222,11 +222,41 @@ function getMissingRequiredGroups(values) {
 function updateRequiredErrors(missingGroups) {
   const missing = new Set(missingGroups);
   document.querySelectorAll("[data-required-group]").forEach((fieldset) => {
-    const hasError = missing.has(fieldset.dataset.requiredGroup);
+    const groupName = fieldset.dataset.requiredGroup;
+    const hasError = missing.has(groupName);
+    const error = fieldset.querySelector(".field-error");
     fieldset.classList.toggle("has-error", hasError);
-    fieldset.setAttribute("aria-invalid", String(hasError));
+    if (hasError) {
+      fieldset.setAttribute("aria-invalid", "true");
+    } else {
+      fieldset.removeAttribute("aria-invalid");
+    }
+    if (error) error.hidden = !hasError;
+    fieldset.querySelectorAll(`input[name="${groupName}"]`).forEach((input) => {
+      if (hasError) {
+        input.setAttribute("aria-invalid", "true");
+        if (error) input.setAttribute("aria-describedby", error.id);
+      } else {
+        input.removeAttribute("aria-invalid");
+        input.removeAttribute("aria-describedby");
+      }
+    });
   });
   document.querySelector("#form-error").hidden = missingGroups.length === 0;
+}
+
+function focusRequiredGroup(groupName) {
+  const fieldset = document.querySelector(`[data-required-group="${groupName}"]`);
+  if (!fieldset) return;
+  const header = document.querySelector(".site-header");
+  const headerHeight = header ? header.getBoundingClientRect().height : 0;
+  const extraMargin = 32;
+  const targetTop = fieldset.getBoundingClientRect().top + window.scrollY - headerHeight - extraMargin;
+  window.scrollTo({
+    top: Math.max(targetTop, 0),
+    behavior: "smooth"
+  });
+  window.setTimeout(() => fieldset.focus({ preventScroll: true }), 320);
 }
 
 function unique(items) {
@@ -617,8 +647,7 @@ form.addEventListener("submit", (event) => {
   const missingRequiredGroups = getMissingRequiredGroups(values);
   updateRequiredErrors(missingRequiredGroups);
   if (missingRequiredGroups.length) {
-    const firstMissingFieldset = document.querySelector(`[data-required-group="${missingRequiredGroups[0]}"]`);
-    (firstMissingFieldset || document.querySelector("#form-error")).scrollIntoView({ behavior: "smooth", block: "center" });
+    focusRequiredGroup(missingRequiredGroups[0]);
     return;
   }
   renderResult(values);

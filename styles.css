@@ -397,12 +397,20 @@ fieldset {
   padding: 0;
   border: 0;
   border-radius: 20px;
+  scroll-margin-top: 104px;
 }
 fieldset.has-error {
   padding: 14px;
   border: 1px solid #cf8279;
   background: rgba(249, 230, 225, .42);
   box-shadow: 0 0 0 3px rgba(207, 130, 121, .08);
+}
+fieldset:focus {
+  outline: none;
+}
+fieldset:focus-visible {
+  outline: 3px solid rgba(105, 129, 102, 0.32);
+  outline-offset: 4px;
 }
 legend {
   width: 100%;
@@ -479,6 +487,12 @@ legend {
   border-radius: 14px;
   color: #795f51;
   background: #f6e5d7;
+  font-weight: 700;
+}
+.field-error {
+  margin: 12px 0 0 46px;
+  color: #8b5c54;
+  font-size: .86rem;
   font-weight: 700;
 }
 
@@ -626,9 +640,9 @@ legend {
 }
 .copy-section {
   width: auto;
-  min-height: 40px;
+  min-height: 44px;
   margin: 0 20px 18px;
-  padding: 7px 10px;
+  padding: 9px 10px;
   border: 0;
   color: var(--muted);
   background: transparent;
@@ -826,6 +840,10 @@ body.modal-open { overflow: hidden; }
   .print-modal-actions { grid-template-columns: 1.4fr 1fr; }
   .print-modal-actions .text-button { grid-column: auto; }
   .related-area { margin: 0; border-radius: var(--radius); padding: 36px; }
+}
+
+@media (max-width: 559px) {
+  fieldset { scroll-margin-top: 112px; }
 }
 
 @media print {

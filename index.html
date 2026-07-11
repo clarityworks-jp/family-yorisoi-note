@@ -115,7 +115,7 @@
       </div>
 
       <form id="note-form" novalidate>
-        <fieldset data-required-group="person">
+        <fieldset data-required-group="person" tabindex="-1" aria-describedby="person-error">
           <legend><span class="question-number">1</span>どなたのことを想って、ノートを作りますか？<span class="field-label required-label">必須</span></legend>
           <p class="field-hint">ひとつ選びます。</p>
           <div class="choice-grid single">
@@ -125,9 +125,10 @@
             <label class="choice"><input type="radio" name="person" value="配偶者の家族"><span>配偶者の家族</span></label>
             <label class="choice wide"><input type="radio" name="person" value="その他の家族"><span>その他の家族</span></label>
           </div>
+          <p id="person-error" class="field-error" hidden>この項目をひとつ選んでください。</p>
         </fieldset>
 
-        <fieldset data-required-group="distance">
+        <fieldset data-required-group="distance" tabindex="-1" aria-describedby="distance-error">
           <legend><span class="question-number">2</span>ふだんの距離感に近いものを選んでください。<span class="field-label required-label">必須</span></legend>
           <p class="field-hint">ひとつ選びます。</p>
           <div class="choice-grid single">
@@ -137,6 +138,7 @@
             <label class="choice"><input type="radio" name="distance" value="帰省や用事のときに会う"><span>帰省や用事のときに会う</span></label>
             <label class="choice wide"><input type="radio" name="distance" value="電話やLINEで話すことが多い"><span>電話やLINEで話すことが多い</span></label>
           </div>
+          <p id="distance-error" class="field-error" hidden>この項目をひとつ選んでください。</p>
         </fieldset>
 
         <fieldset>
@@ -153,7 +155,7 @@
           </div>
         </fieldset>
 
-        <fieldset data-required-group="tone">
+        <fieldset data-required-group="tone" tabindex="-1" aria-describedby="tone-error">
           <legend><span class="question-number">4</span>どんな雰囲気で話したいですか？<span class="field-label required-label">必須</span></legend>
           <p class="field-hint">ひとつ選びます。</p>
           <div class="choice-grid single">
@@ -162,6 +164,7 @@
             <label class="choice"><input type="radio" name="tone" value="family"><span>家族で共有しやすい形で</span></label>
             <label class="choice"><input type="radio" name="tone" value="one"><span>まずは軽く、ひとつだけ</span></label>
           </div>
+          <p id="tone-error" class="field-error" hidden>この項目をひとつ選んでください。</p>
         </fieldset>
 
         <fieldset>
